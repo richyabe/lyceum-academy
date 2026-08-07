@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Portfolio | Clinical Psychologist & International Educator</title>
+<meta name="description" content="Loading…"/>
+<meta name="robots" content="index,follow"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,800;1,400;1,700&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+<link rel="stylesheet" href="../shared/css/base.css"/>
+<link rel="stylesheet" href="css/public.css"/>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="../shared/js/supabase-config.js"></script>
+<script src="../shared/js/utils.js"></script>
+</head>
+<body>
+
+<div id="page-loader"><div class="loader-logo">Portfolio</div><div class="loader-bar"><div class="loader-fill"></div></div></div>
+
+<!-- ══════════ NAVIGATION ══════════ -->
+<nav id="navbar">
+  <div class="container">
+    <div class="nav-inner">
+      <div class="nav-logo" onclick="smoothScrollTo('section-hero')">
+        <div class="logo-icon" id="navLogoIcon"><i class="fas fa-book-open"></i></div>
+        <img id="navLogoImg" class="logo-img" style="display:none" alt="Logo"/>
+        <div><div class="logo-name" id="navLogoName">Portfolio</div><div class="logo-tag" id="navLogoTag">Clinical Psychologist</div></div>
+      </div>
+      <ul class="nav-links" id="navLinks"></ul>
+      <div class="nav-right">
+        <button class="nav-theme-btn" id="navThemeBtn" aria-label="Toggle theme"><i class="fas fa-moon"></i></button>
+        <button class="nav-cta" onclick="openApptModal()"><i class="fas fa-calendar-check"></i> Book Appointment</button>
+        <button id="hbg" aria-label="Open menu"><span></span><span></span><span></span></button>
+      </div>
+    </div>
+  </div>
+</nav>
+<div id="mnav">
+  <button class="mn-close" onclick="closeMobileNav()">×</button>
+  <div id="mobileNavLinks"></div>
+  <button class="mn-cta" onclick="closeMobileNav();openApptModal()"><i class="fas fa-calendar-check"></i> Book Appointment</button>
+</div>
+
+<main class="site-main">
+
+  <!-- ─── HERO ─── -->
+  <section class="hero" id="section-hero">
+    <img id="heroBgImg" class="hero-bg-image" style="display:none" alt=""/>
+    <div class="container">
+      <div class="hero-inner">
+        <div>
+          <div class="live-pill"><div class="live-dot"></div><span class="live-text">Now accepting new students & consultations</span></div>
+          <h1 class="hero-h1" id="heroHeadline">Healing Minds. <em>Shaping Futures.</em></h1>
+          <div class="titles-row" id="heroTitles"></div>
+          <p class="hero-sub" id="heroSub"></p>
+          <div class="hero-btns">
+            <button id="heroCta1" class="btn-gold" onclick="openApptModal()"><i class="fas fa-calendar-check"></i> Book Appointment</button>
+            <a href="#section-publications" id="heroCta2" class="btn-outline" onclick="smoothScrollTo('section-publications');return false"><i class="fas fa-book-open"></i> View Publications</a>
+          </div>
+          <div class="hero-trust" id="heroTrust"></div>
+        </div>
+        <div>
+          <div class="sess-card">
+            <p class="sess-lbl">Featured</p>
+            <h2 class="sess-title">Clinical Consultation</h2>
+            <p class="sess-topic">Individual · Confidential · Evidence-Based</p>
+            <div class="sess-meta"><div class="chip"><i class="fas fa-clock"></i> 60 min</div><div class="chip"><i class="fas fa-video"></i> Online / In-person</div><div class="chip"><i class="fas fa-user"></i> 1-on-1</div></div>
+            <div style="margin-bottom:1.4rem"><div class="prog-lbl"><span>Client Satisfaction</span><span>96%</span></div><div class="prog-bar"><div class="prog-fill" style="width:96%"></div></div></div>
+            <div class="tutor-row"><div class="t-av" id="cardAvatar">DR</div><div><div class="t-name" id="cardTutorName">Loading…</div><div class="t-cred" id="cardTutorCred"></div></div><div class="badge-live">● Available</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── ABOUT ─── -->
+  <section class="sec about-sec" id="section-about">
+    <div class="container">
+      <div class="about-grid">
+        <div data-aos="left"><div class="about-img-wrap" id="aboutImage"><div class="about-img-placeholder"><i class="fas fa-user-tie" style="font-size:3rem;color:rgba(200,162,74,.4)"></i></div></div></div>
+        <div data-aos="right">
+          <span class="eyebrow" id="aboutEyebrow">Who I Am</span>
+          <h2 class="h-sec" id="aboutHeading">About</h2>
+          <div class="rule"></div>
+          <div class="about-body" id="aboutBio"></div>
+          <div class="spec-list" id="aboutSpecs"></div>
+        </div>
+      </div>
+      <div class="about-cards" id="aboutCards" style="margin-top:3rem"></div>
+    </div>
+  </section>
+
+  <!-- ─── QUALIFICATIONS ─── -->
+  <section class="sec qual-sec" id="section-qualifications">
+    <div class="container">
+      <span class="eyebrow" data-aos>Academic Background</span>
+      <h2 class="h-sec" data-aos>Qualifications &amp; <em>Credentials</em></h2>
+      <div class="rule" data-aos></div>
+      <div class="qual-grid">
+        <div class="qual-col" data-aos><h3>Degrees & Licenses</h3><div id="qualCol1"></div></div>
+        <div class="qual-col" data-aos="right"><h3>Certifications & Memberships</h3><div id="qualCol2"></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── EXPERIENCE ─── -->
+  <section class="sec exp-sec" id="section-experience">
+    <div class="container">
+      <span class="eyebrow" data-aos>Professional Journey</span>
+      <h2 class="h-sec" data-aos>Experience &amp; <em>Leadership</em></h2>
+      <div class="rule" data-aos></div>
+      <div class="exp-tabs" id="expTabs"></div>
+      <div id="expPanels"></div>
+    </div>
+  </section>
+
+  <!-- ─── SERVICES ─── -->
+  <section class="sec srv-sec" id="section-services">
+    <div class="container">
+      <span class="eyebrow" data-aos>What I Offer</span>
+      <h2 class="h-sec" data-aos>Professional <em>Services</em></h2>
+      <div class="rule" data-aos></div>
+      <div class="srv-grid" id="servicesGrid" style="margin-top:2rem"></div>
+    </div>
+  </section>
+
+  <!-- ─── PUBLICATIONS ─── -->
+  <section class="sec pub-sec" id="section-publications">
+    <div class="container">
+      <span class="eyebrow" data-aos>Scholarly Work</span>
+      <h2 class="h-sec" data-aos>Research &amp; <em>Publications</em></h2>
+      <div class="rule" data-aos></div>
+      <div class="pub-filters" data-aos>
+        <button class="pub-filter active" data-type="all">All</button>
+        <button class="pub-filter" data-type="journal">Journal Articles</button>
+        <button class="pub-filter" data-type="book">Books</button>
+        <button class="pub-filter" data-type="chapter">Chapters</button>
+        <button class="pub-filter" data-type="conference">Conference Papers</button>
+      </div>
+      <div class="pub-list" id="pubList"></div>
+    </div>
+  </section>
+
+  <!-- ─── METRICS ─── -->
+  <section class="stats-sec" id="section-metrics"><div class="container"><div class="stats-row" id="statsRow"></div></div></section>
+
+  <!-- ─── GALLERY ─── -->
+  <section class="sec gal-sec" id="section-gallery">
+    <div class="container">
+      <span class="eyebrow" data-aos>Moments &amp; Milestones</span>
+      <h2 class="h-sec" data-aos>Gallery</h2>
+      <div class="rule" data-aos></div>
+      <div class="gal-grid" id="galleryGrid" data-aos></div>
+    </div>
+  </section>
+
+  <!-- ─── MEDIA ─── -->
+  <section class="media-sec" id="section-media">
+    <div class="container">
+      <span class="eyebrow" data-aos style="color:var(--gold-light)">Educational Content</span>
+      <h2 class="h-sec" data-aos style="color:#fff">Media &amp; <em>Talks</em></h2>
+      <div class="rule" data-aos></div>
+      <div class="vid-grid" id="vidGrid" style="margin-top:2rem"></div>
+    </div>
+  </section>
+
+  <!-- ─── TEACHERS (NEW) ─── -->
+  <section class="sec teach-sec" id="section-teachers">
+    <div class="container">
+      <span class="eyebrow" data-aos>Meet the Team</span>
+      <h2 class="h-sec" data-aos>Our <em>Teachers</em></h2>
+      <div class="rule" data-aos></div>
+      <p class="sub-sec" data-aos style="margin-bottom:2.5rem">Every tutor is vetted and approved. Book a session directly with the teacher who fits your needs.</p>
+      <div class="teach-grid" id="teachersGrid"></div>
+    </div>
+  </section>
+
+  <!-- ─── TESTIMONIALS ─── -->
+  <section class="sec testi-sec" id="section-testimonials">
+    <div class="container">
+      <span class="eyebrow" data-aos>What People Say</span>
+      <h2 class="h-sec" data-aos>Testimonials &amp; <em>Success Stories</em></h2>
+      <div class="rule" data-aos></div>
+      <div class="testi-wrap" data-aos><div class="testi-track" id="testiTrack"></div></div>
+      <div class="t-dots" id="testiDots"></div>
+    </div>
+  </section>
+
+  <!-- ─── CAREERS (NEW) ─── -->
+  <section class="sec careers-sec" id="section-careers">
+    <div class="container">
+      <span class="eyebrow" data-aos>Join Our Team</span>
+      <h2 class="h-sec" data-aos>Careers &amp; <em>Opportunities</em></h2>
+      <div class="rule" data-aos></div>
+      <p class="sub-sec" data-aos style="margin-bottom:2rem">We're always looking for passionate tutors and team members. Browse open roles below.</p>
+      <div class="jobs-list" id="jobsList" data-aos></div>
+    </div>
+  </section>
+
+  <!-- ─── APPOINTMENT ─── -->
+  <section class="appt-sec" id="section-appointment">
+    <div class="container">
+      <span class="eyebrow" data-aos style="color:var(--gold-light)">Getting Started</span>
+      <h2 class="h-sec" data-aos style="color:#fff">Book an <em>Appointment</em></h2>
+      <div class="rule" data-aos></div>
+      <div class="appt-grid">
+        <div data-aos="left">
+          <div class="glass-panel">
+            <h3>Consultation Details</h3>
+            <p id="apptDetails" style="font-size:.9rem;color:rgba(255,255,255,.5);margin-bottom:1.2rem"></p>
+            <div class="avail-list" id="availList"></div>
+          </div>
+        </div>
+        <div data-aos="right">
+          <div class="appt-actions"><button class="btn-wa" onclick="openApptModal()"><i class="fas fa-calendar-check" style="font-size:1.2rem"></i> Request an Appointment</button></div>
+          <p id="apptFees" style="color:rgba(255,255,255,.5);font-size:.85rem;margin-bottom:1rem"></p>
+          <div id="apptNotes"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── CONTACT ─── -->
+  <section class="sec contact-sec" id="section-contact">
+    <div class="container">
+      <span class="eyebrow" data-aos>Get in Touch</span>
+      <h2 class="h-sec" data-aos>Contact</h2>
+      <div class="rule" data-aos></div>
+      <div class="contact-grid">
+        <div class="c-info" id="contactInfo" data-aos="left"></div>
+        <form class="contact-form-wrap" id="contactForm" data-aos="right">
+          <div class="f-row"><div class="f-group"><label>Full Name *</label><input class="f-control" id="cfName" required/></div><div class="f-group"><label>Email *</label><input class="f-control" id="cfEmail" type="email" required/></div></div>
+          <div class="f-row"><div class="f-group"><label>Phone</label><input class="f-control" id="cfPhone"/></div><div class="f-group"><label>Subject</label><input class="f-control" id="cfSubject"/></div></div>
+          <div class="f-group"><label>Message *</label><textarea class="f-control" id="cfMessage" rows="5" required></textarea></div>
+          <button type="submit" class="submit-btn"><i class="fas fa-paper-plane"></i> Send Message</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <div class="container" style="padding-bottom:3rem"><div id="contactSocials" class="soc-row" style="justify-content:center"></div></div>
+
+</main>
+
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div style="display:flex;align-items:center;gap:.7rem;margin-bottom:.2rem"><div class="logo-icon" style="width:38px;height:38px;font-size:1.1rem"><i class="fas fa-book-open"></i></div><div><div style="font-family:var(--font-display);font-size:1.05rem;font-weight:700;color:#fff" id="footerBrandName">Portfolio</div><div style="font-size:.58rem;color:rgba(255,255,255,.3);letter-spacing:.1em" id="footerTagline">EXCELLENCE IN PRACTICE</div></div></div>
+        <p id="footerDesc"></p>
+      </div>
+      <div class="f-col"><h5 id="footerCol2Title">Quick Links</h5><ul>
+        <li><a href="#" onclick="smoothScrollTo('section-about');return false">About</a></li>
+        <li><a href="#" onclick="smoothScrollTo('section-qualifications');return false">Qualifications</a></li>
+        <li><a href="#" onclick="smoothScrollTo('section-services');return false">Services</a></li>
+        <li><a href="#" onclick="smoothScrollTo('section-teachers');return false">Our Teachers</a></li>
+      </ul></div>
+      <div class="f-col"><h5 id="footerCol3Title">Research</h5><ul>
+        <li><a href="#" onclick="smoothScrollTo('section-publications');return false">Publications</a></li>
+        <li><a href="#" onclick="smoothScrollTo('section-media');return false">Media & Talks</a></li>
+        <li><a href="#" onclick="smoothScrollTo('section-testimonials');return false">Testimonials</a></li>
+        <li><a href="#" onclick="smoothScrollTo('section-careers');return false">Careers</a></li>
+      </ul></div>
+      <div class="f-col"><h5 id="footerCol4Title">Contact</h5><ul>
+        <li><a href="#" onclick="openApptModal();return false">Book Appointment</a></li>
+        <li><a href="#" onclick="smoothScrollTo('section-contact');return false">Contact Form</a></li>
+      </ul></div>
+    </div>
+    <div class="footer-bottom"><p class="f-copy" id="footerCopyright">© 2025. All rights reserved.</p><div class="f-socials" id="footerSocials"></div></div>
+  </div>
+</footer>
+
+<button class="nav-cta" id="fab-wa" style="position:fixed;bottom:2rem;right:2rem;z-index:900;width:56px;height:56px;border-radius:50%;padding:0;justify-content:center;box-shadow:0 6px 24px rgba(200,162,74,.4)" onclick="openApptModal()" aria-label="Book appointment"><i class="fas fa-calendar-check" style="font-size:1.3rem"></i></button>
+<button id="btt" aria-label="Back to top"><i class="fas fa-arrow-up"></i></button>
+
+<div class="lightbox" id="lightbox"><button class="lightbox-close" aria-label="Close">×</button><img id="lightboxImg" src="" alt=""/></div>
+
+<!-- ══════════ APPOINTMENT BOOKING MODAL (NEW) ══════════ -->
+<div class="pub-modal" id="apptModal">
+  <div class="pub-modal-backdrop" onclick="closeApptModal()"></div>
+  <div class="pub-modal-box">
+    <div class="pub-modal-header"><h3>Book an Appointment</h3><button class="pub-modal-close" onclick="closeApptModal()">×</button></div>
+    <div class="pub-modal-body">
+      <form id="apptForm">
+        <div class="pm-group"><label>Full Name *</label><input class="pm-control" id="amName" required/></div>
+        <div class="pm-row">
+          <div class="pm-group"><label>Email *</label><input class="pm-control" id="amEmail" type="email" required/></div>
+          <div class="pm-group"><label>Phone</label><input class="pm-control" id="amPhone"/></div>
+        </div>
+        <div class="pm-group"><label>Preferred Teacher (optional)</label><select class="pm-control" id="amTeacher"><option value="">No preference / General</option></select></div>
+        <div class="pm-group"><label>Subject / Topic</label><input class="pm-control" id="amSubject" placeholder="e.g. Chemistry, General consultation"/></div>
+        <div class="pm-row">
+          <div class="pm-group"><label>Preferred Date</label><input class="pm-control" id="amDate" type="date"/></div>
+          <div class="pm-group"><label>Preferred Time</label><input class="pm-control" id="amTime" type="time"/></div>
+        </div>
+        <div class="pm-group"><label>Message</label><textarea class="pm-control" id="amMessage" rows="3" placeholder="Anything you'd like us to know…"></textarea></div>
+        <button type="submit" class="pm-submit"><i class="fas fa-paper-plane"></i> Submit Request</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════ JOB APPLICATION MODAL (NEW) ══════════ -->
+<div class="pub-modal" id="applyModal">
+  <div class="pub-modal-backdrop" onclick="closeApplyModal()"></div>
+  <div class="pub-modal-box">
+    <div class="pub-modal-header"><h3 id="applyModalTitle">Apply Now</h3><button class="pub-modal-close" onclick="closeApplyModal()">×</button></div>
+    <div class="pub-modal-body">
+      <form id="applyForm">
+        <input type="hidden" id="apJobId"/>
+        <input type="hidden" id="apJobType"/>
+        <div class="pm-group"><label>Full Name *</label><input class="pm-control" id="apName" required/></div>
+        <div class="pm-row">
+          <div class="pm-group"><label>Email *</label><input class="pm-control" id="apEmail" type="email" required/></div>
+          <div class="pm-group"><label>Phone</label><input class="pm-control" id="apPhone"/></div>
+        </div>
+        <div class="pm-group" id="apSubjectsGroup" style="display:none"><label>Subjects You Can Teach</label><input class="pm-control" id="apSubjects" placeholder="Chemistry, Biology, Physics"/></div>
+        <div class="pm-group"><label>Cover Letter / Why You're a Good Fit *</label><textarea class="pm-control" id="apCoverLetter" rows="5" required></textarea></div>
+        <div class="pm-group"><label>Resume / CV (PDF)</label><div class="pm-file-zone" id="apResumeZone"><i class="fas fa-file-pdf"></i> Click to upload your CV/Resume</div><input type="file" id="apResumeFile" accept=".pdf" style="display:none"/><div id="apResumeInfo" style="margin-top:.5rem;font-size:.8rem;color:var(--gold)"></div></div>
+        <button type="submit" class="pm-submit"><i class="fas fa-paper-plane"></i> Submit Application</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+<div id="toast-container"></div>
+<script src="js/public.js"></script>
+</body>
+</html>
