@@ -6,7 +6,7 @@
   "trailingSlash": false,
   "rewrites": [
     { "source": "/", "destination": "/site/index.html" },
-    { "source": "/admin", "destination": "/admin/index.html" },
+    { "source": "/admin", "destination": "/admin/admin.html" },
     { "source": "/admin/login", "destination": "/admin/login.html" }
   ],
   "headers": [
