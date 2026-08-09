@@ -8,10 +8,10 @@
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet"/>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
-<link rel="stylesheet" href="../shared/css/base.css"/>
+<link rel="stylesheet" href="/shared/css/base.css"/>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-<script src="../shared/js/supabase-config.js"></script>
-<script src="../shared/js/utils.js"></script>
+<script src="/shared/js/supabase-config.js"></script>
+<script src="/shared/js/utils.js"></script>
 <style>
 body{background:linear-gradient(135deg,#141D30 0%,#1F2A44 50%,#263252 100%);min-height:100vh;display:flex;align-items:center;justify-content:center;padding:1.5rem}
 body::before{content:'';position:fixed;inset:0;background-image:linear-gradient(rgba(200,162,74,.04)1px,transparent 1px),linear-gradient(90deg,rgba(200,162,74,.04)1px,transparent 1px);background-size:50px 50px;pointer-events:none}
@@ -68,7 +68,7 @@ body::before{content:'';position:fixed;inset:0;background-image:linear-gradient(
 
 <script>
 sb.auth.getSession().then(({ data: { session } }) => {
-  if (session) window.location.href = 'index.html';
+  if (session) window.location.href = '/admin/index.html';
 });
 
 document.getElementById('togglePwd').addEventListener('click', () => {
@@ -100,7 +100,7 @@ document.getElementById('loginForm').addEventListener('submit', async (e) => {
     btn.disabled = false;
     btn.innerHTML = '<i class="fas fa-lock-open"></i> Sign In to Dashboard';
   } else {
-    window.location.href = 'index.html';
+    window.location.href = '/admin/index.html';
   }
 });
 
