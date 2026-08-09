@@ -7,7 +7,7 @@
 
 // ─── YOUR SUPABASE CREDENTIALS (replace these) ────────────────────────────────
 const SUPABASE_URL      = 'https://odzsxvqnyirxgggdxwow.supabase.co';
-const SUPABASE_ANON_KEY = 'sb_publishable_egsar6Y0yhti00vH8LOzOw_BQbHcWQN';
+const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im9kenN4dnFueWlyeGdnZ2R4d293Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODYwMzQ5MjMsImV4cCI6MjEwMTYxMDkyM30.1YW6uUsflQevuyfWWbVV-v9kVgEhJTO0GQoLtMlvO_8';
 // ──────────────────────────────────────────────────────────────────────────────
 
 // Initialize Supabase client (loaded via CDN script in each HTML page)
