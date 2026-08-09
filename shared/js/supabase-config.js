@@ -6,8 +6,8 @@
  */
 
 // ─── YOUR SUPABASE CREDENTIALS (replace these) ────────────────────────────────
-const SUPABASE_URL      = 'https://YOUR_PROJECT_REF.supabase.co';
-const SUPABASE_ANON_KEY = 'YOUR_SUPABASE_ANON_KEY';
+const SUPABASE_URL      = 'https://odzsxvqnyirxgggdxwow.supabase.co';
+const SUPABASE_ANON_KEY = 'sb_publishable_egsar6Y0yhti00vH8LOzOw_BQbHcWQN';
 // ──────────────────────────────────────────────────────────────────────────────
 
 // Initialize Supabase client (loaded via CDN script in each HTML page)
