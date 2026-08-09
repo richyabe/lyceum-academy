@@ -19,12 +19,39 @@
 
 <script>
   document.body.style.visibility = 'hidden';
-  sb.auth.getSession().then(({ data: { session } }) => {
+
+  // Safety net: if the session check hasn't resolved within 8 seconds,
+  // reveal the page with a clear error instead of staying blank forever.
+  const authTimeout = setTimeout(() => {
+    document.body.style.visibility = 'visible';
+    document.body.innerHTML = `<div style="min-height:100vh;display:flex;align-items:center;justify-content:center;font-family:sans-serif;padding:2rem;text-align:center">
+      <div>
+        <h2 style="margin-bottom:1rem">Couldn't connect to Supabase</h2>
+        <p style="color:#666;max-width:420px;margin:0 auto 1.5rem">The session check timed out. This usually means the Supabase URL or anon key in <code>shared/js/supabase-config.js</code> is missing or incorrect, or there's a network issue.</p>
+        <a href="/admin/login.html" style="color:#C8A24A;font-weight:600">Go to Login</a>
+      </div>
+    </div>`;
+  }, 8000);
+
+  sb.auth.getSession().then(({ data: { session }, error }) => {
+    clearTimeout(authTimeout);
+    if (error) throw error;
     if (!session) { window.location.href = '/admin/login.html'; return; }
     document.body.style.visibility = 'visible';
     window._adminUser = session.user;
     initAdmin(session.user);
+  }).catch(err => {
+    clearTimeout(authTimeout);
+    document.body.style.visibility = 'visible';
+    document.body.innerHTML = `<div style="min-height:100vh;display:flex;align-items:center;justify-content:center;font-family:sans-serif;padding:2rem;text-align:center">
+      <div>
+        <h2 style="margin-bottom:1rem">Something went wrong</h2>
+        <p style="color:#666;max-width:420px;margin:0 auto 1.5rem">${(err && err.message) ? err.message : 'Unknown error during session check.'}</p>
+        <a href="/admin/login.html" style="color:#C8A24A;font-weight:600">Go to Login</a>
+      </div>
+    </div>`;
   });
+
   sb.auth.onAuthStateChange((event, session) => {
     if (event === 'SIGNED_OUT') window.location.href = '/admin/login.html';
   });
