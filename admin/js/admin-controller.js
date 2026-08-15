@@ -54,7 +54,7 @@ function showPage(page) {
 function setupTopbar() {
   document.getElementById('logoutBtn').addEventListener('click', async () => {
     const ok = await showConfirm('Sign Out', 'Are you sure you want to sign out?', 'Sign Out', 'Cancel');
-    if (ok) { await sb.auth.signOut(); window.location.href = 'login.html'; }
+    if (ok) { await sb.auth.signOut(); window.location.href = '/admin/login.html'; }
   });
   document.getElementById('themeBtn').addEventListener('click', () => {
     const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
